@@ -23,7 +23,7 @@ const Device = db.define('devices', {
     allowNull: false,
     validate: {
       isAlpha: true,
-      max: 16
+      len: [1, 16]
     }
   },
   partNumber: {

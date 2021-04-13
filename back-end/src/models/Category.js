@@ -13,7 +13,7 @@ const Category = db.define('categories', {
     allowNull: false,
     notEmpty: true,
     validate: {
-      max: 128
+      len: [1, 128]
     }
   },
   createdAt: {
