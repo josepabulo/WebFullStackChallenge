@@ -1,8 +1,16 @@
-const model = require('../models/Category')
+const model = require('../models/Device')
+const category = require('../models/Category')
 
 async function findOne (id) {
   try {
     result = await model.findOne({
+      include: [
+        {
+          model: category,
+          as: 'category',
+          attributes: ['id', 'name']
+        }
+      ],
       where: {
         id
       }
@@ -16,7 +24,15 @@ async function findOne (id) {
 
 async function findAll () {
   try {
-    result = await model.findAndCountAll({})
+    result = await model.findAndCountAll({
+      include: [
+        {
+          model: category,
+          as: 'category',
+          attributes: ['id', 'name']
+        }
+      ]
+    })
     return result
   } catch (error) {
     console.log(error)
