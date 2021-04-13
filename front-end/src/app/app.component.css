@@ -1,0 +1,49 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+mat-toolbar {
+  color: #fff;
+  background-color: #444444;
+  width: 100%;
+}
+
+mat-drawer-content {
+  flex: 1 1 auto;
+}
+
+mat-drawer-container {
+  position: absolute;
+  top:0;
+  width: 100%;
+  bottom: 0;
+}
+
+mat-drawer {
+  width: 250px;
+}
+
+mat-list-item {
+  cursor: pointer;
+  font-weight: 550;
+}
+
+mat-list-item:hover {
+  background-color: #b3b3b3 !important;
+}
+
+.project-name {
+  margin-left: 5px;
+}
+
+.main-container {
+  padding: 100px 200px 150px 200px;
+}
+
+.menu {
+  text-align: center;
+}
+
+.menu-icon {
+  font-size: 20px;
+}
