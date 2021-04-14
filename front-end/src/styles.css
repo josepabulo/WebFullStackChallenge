@@ -1,8 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
 .menu-icon {
   font-size: 20px !important;
+}
+
+table {
+  width: 100%;
+}
+
+mat-card {
+  padding-top: 30px !important;
+}
+
+mat-card-content {
+  padding: 18px;
+}
+
+mat-card-header {
+  padding-right: 18px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+#action-cell {
+  text-align: right !important;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.fl-r {
+  float: right;
 }

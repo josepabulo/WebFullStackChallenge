@@ -1,0 +1,21 @@
+<mat-card class="mat-elevation-z8">
+  <mat-card-header>
+    <mat-card-title>New Category</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form (ngSubmit)="saveOrUpdate()">
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput name="name" [(ngModel)]="obj.name" placeholder="Name" />
+        <mat-icon matSuffix>category</mat-icon>
+      </mat-form-field>
+      <div>
+        <button mat-raised-button (click)="back()">Back</button>
+        <button mat-raised-button type="submit" style="margin-left: 10px">
+          Save
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

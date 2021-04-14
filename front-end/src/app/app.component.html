@@ -4,15 +4,27 @@
       <span>Menu</span>
     </mat-toolbar>
     <mat-list>
-      <mat-list-item>
+      <mat-list-item
+        [routerLink]="['/home']"
+        routerLinkActive="active-link"
+        (click)="drawer.toggle()"
+      >
         <mat-icon mat-list-icon class="menu-icon">home</mat-icon>
         Home
       </mat-list-item>
-      <mat-list-item>
+      <mat-list-item
+        [routerLink]="['/category']"
+        routerLinkActive="active-link"
+        (click)="drawer.toggle()"
+      >
         <mat-icon mat-list-icon class="menu-icon">category</mat-icon>
         Category
       </mat-list-item>
-      <mat-list-item>
+      <mat-list-item
+        routerLink="/device"
+        routerLinkActive="active-link"
+        (click)="drawer.toggle()"
+      >
         <mat-icon mat-list-icon class="menu-icon">devices</mat-icon>
         Device
       </mat-list-item>
@@ -30,9 +42,7 @@
       <span class="spacer"></span>
     </mat-toolbar>
     <div class="main-container">
-      <div style="width: 100%; height: 500px; border: solid 1px red">Teste</div>
+      <router-outlet></router-outlet>
     </div>
   </mat-drawer-content>
 </mat-drawer-container>
-
-<router-outlet></router-outlet>

@@ -1,7 +1,3 @@
-.spacer {
-  flex: 1 1 auto;
-}
-
 mat-toolbar {
   color: #fff;
   background-color: #444444;
@@ -26,6 +22,7 @@ mat-drawer {
 mat-list-item {
   cursor: pointer;
   font-weight: 550;
+  outline: none;
 }
 
 mat-list-item:hover {
@@ -46,4 +43,17 @@ mat-list-item:hover {
 
 .menu-icon {
   font-size: 20px;
+}
+/*
+.active-link mat-icon {
+  color: #FFF !important;
+} */
+
+.active-link a {
+  color: #f6f6f6 !important;
+}
+
+.active-link {
+  background-color: #b3b3b3 !important;
+  box-shadow:inset 5px 0px 0px 0px #444444;
 }
