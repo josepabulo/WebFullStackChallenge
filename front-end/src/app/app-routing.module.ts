@@ -20,6 +20,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'device',
+    loadChildren: () =>
+      import('./view/device/device.module').then(
+        (mod) => mod.DeviceModule
+      ),
+  },
+  {
     path: '',
     redirectTo: '',
     pathMatch: 'full',

@@ -1,0 +1,61 @@
+<mat-card class="mat-elevation-z8">
+  <mat-card-header>
+    <mat-card-title>New Device</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form #form="ngForm" (ngSubmit)="saveOrUpdate()">
+      <mat-form-field appearance="outline" style="margin-left: 0px;">
+        <mat-label>Category</mat-label>
+        <mat-select
+          #idCategory="ngModel"
+          name="idCategory"
+          [(ngModel)]="obj.idCategory"
+          placeholder="Category"
+          required
+        >
+          <mat-option *ngFor="let item of listCategory" [value]="item.id">
+            {{ item.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Color</mat-label>
+        <input
+          matInput
+          #color="ngModel"
+          name="color"
+          [(ngModel)]="obj.color"
+          placeholder="Color"
+          required pattern="[a-zA-Z]*" maxlength="16"
+        />
+        <mat-icon matSuffix>palette</mat-icon>
+        <mat-error *ngIf="color.errors?.pattern">This field must contain only letters.</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Part Number</mat-label>
+        <input
+          matInput
+          #partNumber="ngModel"
+          name="partNumber"
+          [(ngModel)]="obj.partNumber"
+          placeholder="Part Number"
+          required pattern="[0-9]+"
+        />
+        <mat-icon matSuffix>tag</mat-icon>
+        <mat-error *ngIf="partNumber.errors?.pattern">This field must contain only numbers.</mat-error>
+      </mat-form-field>
+      <div>
+        <button mat-raised-button (click)="back()">Back</button>
+        <button
+          mat-raised-button
+          type="submit"
+          [disabled]="!form.form.valid"
+          style="margin-left: 10px"
+        >
+          Save
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

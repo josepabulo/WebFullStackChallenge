@@ -1,20 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CategoryService } from '../../category/category-service/category.service';
 
-import { CategoryService } from '../category-service/category.service';
+import { DeviceService } from '../device-service/device.service';
 
 @Component({
-  selector: 'app-category-form',
-  templateUrl: './category-form.component.html',
-  styleUrls: ['./category-form.component.css'],
+  selector: 'app-device-form',
+  templateUrl: './device-form.component.html',
+  styleUrls: ['./device-form.component.css'],
 })
-export class CategoryFormComponent implements OnInit {
+export class DeviceFormComponent implements OnInit {
   public obj: any = [];
   public edit = false;
+  public listCategory: any = [];
 
   constructor(
-    private service: CategoryService,
+    private service: DeviceService,
+    private serviceCategory: CategoryService,
     private router: Router,
     public activatedRoute: ActivatedRoute,
     private _snackBar: MatSnackBar
@@ -22,6 +25,9 @@ export class CategoryFormComponent implements OnInit {
 
   ngOnInit() {
     this.getOne();
+    this.serviceCategory.getAll().subscribe((res: any) => {
+      this.listCategory = res.rows;
+    });
   }
 
   getOne() {
@@ -68,7 +74,7 @@ export class CategoryFormComponent implements OnInit {
     } else {
       this.service.save(this.obj).subscribe(
         (success) => {
-          // console.log(success);
+          console.log(success);
           this._snackBar.open('Successfully created', 'Close', {
             duration: 4000,
             horizontalPosition: 'right',
@@ -77,7 +83,7 @@ export class CategoryFormComponent implements OnInit {
           this.back();
         },
         (error) => {
-          // console.log(error);
+          console.log(error);
           this._snackBar.open('Error saving', 'Close', {
             duration: 4000,
             horizontalPosition: 'right',
