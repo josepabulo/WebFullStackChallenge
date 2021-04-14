@@ -44,6 +44,6 @@ const Device = db.define('devices', {
   }
 })
 
-Device.belongsTo(Category, { as: 'category', foreignKey: 'idCategory' })
+Device.belongsTo(Category, { as: 'category', foreignKey: 'idCategory', onDelete: 'CASCADE' })
 
 module.exports = Device
