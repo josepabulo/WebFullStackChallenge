@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { DialogComponent } from 'src/app/component/dialog/dialog/dialog.component';
 
 import { CategoryService } from '../category-service/category.service';
 
@@ -12,11 +14,16 @@ import { CategoryService } from '../category-service/category.service';
 })
 export class CategoryListComponent {
   public list: any = [];
+  public DELETE = {
+    title: 'Are you sure you want to delete?',
+    content: 'All data linked to this record will be deleted in a cascade.',
+  };
 
   constructor(
     public service: CategoryService,
     public router: Router,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    public dialog: MatDialog
   ) {}
 
   public dataSource = new MatTableDataSource<any>();
@@ -56,23 +63,31 @@ export class CategoryListComponent {
   }
 
   delete(obj: any) {
-    console.log(obj.id);
-    this.service.delete(obj.id).subscribe(
-      (success) => {
-        this.getAll();
-        this._snackBar.open('Successfully deleted', 'Close', {
-          duration: 4000,
-          horizontalPosition: 'right',
-          verticalPosition: 'top',
-        });
-      },
-      (error) => {
-        this._snackBar.open('Error while deleting', 'Close', {
-          duration: 4000,
-          horizontalPosition: 'right',
-          verticalPosition: 'top',
-        });
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '400px',
+      data: { settings: this.DELETE },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.service.delete(obj.id).subscribe(
+          (success) => {
+            this.getAll();
+            this._snackBar.open('Successfully deleted', 'Close', {
+              duration: 4000,
+              horizontalPosition: 'right',
+              verticalPosition: 'top',
+            });
+          },
+          (error) => {
+            this._snackBar.open('Error while deleting', 'Close', {
+              duration: 4000,
+              horizontalPosition: 'right',
+              verticalPosition: 'top',
+            });
+          }
+        );
       }
-    );
+    });
   }
 }

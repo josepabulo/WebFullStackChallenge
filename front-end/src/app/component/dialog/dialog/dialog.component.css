@@ -1,0 +1,21 @@
+.padding-btn {
+    padding: 10px;
+}
+
+.card-header {
+  margin-bottom: 10px;
+}
+
+.card-footer {
+  display: inline-block;
+  text-align: right !important;
+}
+
+.btn-yes {
+  margin-left: 10px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 550;
+}
