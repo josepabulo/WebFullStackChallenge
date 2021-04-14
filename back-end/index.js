@@ -14,12 +14,8 @@
 
     app.use('/', require('./src/routes/index.js'))
 
-    const db = require('./config/db')
-    try {
-      await db.sync()
-    } catch (error) {
-      console.log(error)
-    }
+    // const db = require('./config/db')
+    // await db.sync()
 
     app.listen(3000, () => {
       console.log('Server iniciado.. http://localhost:3000')
